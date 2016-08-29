@@ -48,3 +48,13 @@ CSV.open('updated_guests.csv', 'w') do |csv| # Create a new file updated_guests.
     csv.puts row
   end
 end
+
+
+#using enum for mem efficiencty
+
+CSV.open('guests.csv', headers:true) do |guest|
+  guests = guest.each
+  guests.select do |row|
+    row['Times arrived'].to_i > 10
+  end
+end
